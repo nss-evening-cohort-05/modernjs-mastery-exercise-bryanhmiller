@@ -1,8 +1,8 @@
 $(document).ready(function(){
     const theTeams = [];
-    const xMen = [];
-    const theAvengers = [];
-    const guardiansOfTheGalaxy = [];
+    let xMen = [];
+    let theAvengers = [];
+    let guardiansOfTheGalaxy = [];
     let teamId = 0;
 
     const writeToDOM = (theTeams) => {
@@ -12,18 +12,21 @@ $(document).ready(function(){
 	$("#xmen-button").click((event) => {
 	    console.log($(event.currentTarget));
 	    hideLogo();
+	    clearTeamArrays();
 	    assembleXMen();
 	  });
 
 	$("#avengers-button").click((event) => {
 	    console.log($(event.currentTarget));
 	    hideLogo();
+	    clearTeamArrays();
 	    assembleAvengers();
 	  });
 
 	$("#gaurdians-button").click((event) => {
 	    console.log($(event.currentTarget));
 	    hideLogo();
+	    clearTeamArrays();
 	    assembleGuardians();
 	  });
 
@@ -31,6 +34,11 @@ $(document).ready(function(){
 		$("#logo").addClass("hidden");
 	};
 
+	const clearTeamArrays = () => {
+	    xMen = [];
+    	theAvengers = [];
+    	guardiansOfTheGalaxy = [];
+	};
 
     const loadTeams = () => {
         return new Promise((resolve, reject) => {
@@ -117,14 +125,11 @@ $(document).ready(function(){
 
 	Promise.all([loadTeams(), loadGenders(), loadCharacters()])
 	.then(function(result){
-		console.log("result", result);
 			result.forEach(function(xhrResult){
-				console.log("xhrResult", xhrResult);
 				xhrResult.forEach(function(data){
 					theTeams.push(data);
 				});
 			});
-		console.log("theTeams", theTeams);
 		writeToDOM(theTeams);
 	})
 	.catch(function(errors){
