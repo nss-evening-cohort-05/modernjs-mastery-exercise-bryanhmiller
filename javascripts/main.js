@@ -8,6 +8,7 @@ $(document).ready(function(){
 	$("#xmen-button").click((event) => {
 	    console.log($(event.currentTarget));
 	    hideLogo();
+	    assembleXMen();
 	  });
 
 	$("#avengers-button").click((event) => {
@@ -72,11 +73,9 @@ $(document).ready(function(){
 
 
     const assembleXMen = (team, characters) => {
-    	if (theTeams.name === "X-Men"){
-    		let teamId = theTeams.id
-    		console.log(teamId);
-    	}
-    	console.log(teamId);
+    	for (var i = 0; i < theTeams.length; i++) {
+    		console.log(theTeams[i]);
+    	} 
     }
 
     const assembleAvengers = () => {
@@ -88,10 +87,15 @@ $(document).ready(function(){
     }
     
 
-	Promise.all([loadTeams(), loadGenders(), loadCharacters()])
+	Promise.all([loadTeams(), loadCharacters(), loadGenders()])
 	.then(function(result){
 		console.log("result", result);
-		theTeams.push(result);
+			result.forEach(function(xhrResult){
+				console.log("xhrResult", xhrResult);
+				xhrResult.forEach(function(data){
+					theTeams.push(data);
+				});
+			});
 		console.log("theTeams", theTeams);
 		writeToDOM(theTeams);
 	})
