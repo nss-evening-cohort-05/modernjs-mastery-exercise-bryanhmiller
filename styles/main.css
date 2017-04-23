@@ -33,7 +33,8 @@ body {
 }
 
 .panel-warning > .panel-heading {
-  background-color: #f78f3f;
+	color: #000000;	
+	background-color: #f78f3f;
 }
 
 .panel-body {
@@ -43,7 +44,7 @@ body {
 .img-circle {
 	height: 150px;
 	width: 150px;
-	margin: 10px auto;
+	margin: 20px auto;
 }
 
 

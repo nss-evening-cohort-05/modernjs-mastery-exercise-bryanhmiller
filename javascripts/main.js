@@ -3,8 +3,10 @@ $(document).ready(function(){
     let xMen = [];
     let theAvengers = [];
     let guardiansOfTheGalaxy = [];
+    const emptyTeam = [];
     let teamId = 0;
     let domString;
+
 
     const writeToDOM = (team) => {
     	domString += `<div class="container"><div class="row">`;
@@ -52,11 +54,11 @@ $(document).ready(function(){
 	    xMen = [];
     	theAvengers = [];
     	guardiansOfTheGalaxy = [];
+        clearDOM();
 	};
 
 	const clearDOM = () => {
-		domString = `""`;
-		$("#card-holder").append(domString);
+        writeToDOM(emptyTeam);
 	};
 
     const loadTeams = () => {
@@ -92,7 +94,6 @@ $(document).ready(function(){
     				xMen.push(theTeams[i]);
     		}
     	}
-        clearDOM();
     	writeToDOM(xMen);
   	};
 
@@ -105,8 +106,7 @@ $(document).ready(function(){
     			theAvengers.push(theTeams[m]);
     		}
     	}
-        clearDOM(); 
-    	writeToDOM(theAvengers);
+        writeToDOM(theAvengers);
     };
 
     const assembleGuardians = () => {
@@ -118,7 +118,6 @@ $(document).ready(function(){
 				guardiansOfTheGalaxy.push(theTeams[q]);
     		}
     	}
-        clearDOM();
     	writeToDOM(guardiansOfTheGalaxy);
     };
     
