@@ -52,7 +52,13 @@ $(document).ready(function(){
 	    xMen = [];
     	theAvengers = [];
     	guardiansOfTheGalaxy = [];
+    	clearDOM();
 	};
+
+	const clearDOM = () => {
+		domString = `<div></div>`;
+		$("#card-holder").append(domString);
+	}
 
     const loadTeams = () => {
         return new Promise((resolve, reject) => {
