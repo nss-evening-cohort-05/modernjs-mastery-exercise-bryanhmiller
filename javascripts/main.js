@@ -7,13 +7,18 @@ $(document).ready(function(){
     let domString;
 
     const writeToDOM = (team) => {
+    	domString += `<div class="row">`;
   		for(t = 0; t < team.length; t++) {
-			domString += `<div class="panel panel-default">`;
+			domString += `<div class="panel panel-default col-md-2">`;
 			domString += `<div class="panel-heading"><h3 class="panel-title">${team[t].name}</h3></div>`;
-			domString += `<img src="${team[t].image}"/>`;
+			domString += `<img class="img-circle" src="${team[t].image}" alt="${team[t].name}"/>`;
 			domString += `<div class="panel-body">${team[t].description}</div>`;
 			domString += `</div>`;
+			if ((t + 1) % 4 === 0) {
+				domString += `</div><div class="row">`;
+			}
 		}
+		domString += `</div>`;	
 
     	$("#card-holder").append(domString);
     };
