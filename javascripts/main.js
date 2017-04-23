@@ -7,9 +7,9 @@ $(document).ready(function(){
     let domString;
 
     const writeToDOM = (team) => {
-    	domString += `<div class="row">`;
+    	domString += `<div class="container"><div class="row">`;
   		for(t = 0; t < team.length; t++) {
-			domString += `<div class="panel panel-default">`;
+			domString += `<div class="panel panel-warning">`;
 			domString += `<div class="panel-heading"><h3 class="panel-title">${team[t].name}</h3></div>`;
 			domString += `<img class="img-circle" src="${team[t].image}" alt="${team[t].name}"/>`;
 			domString += `<div class="panel-body">${team[t].description}</div>`;
@@ -18,7 +18,7 @@ $(document).ready(function(){
 				domString += `</div><div class="row">`;
 			}
 		}
-		domString += `</div>`;	
+		domString += `</div></div>`;	
 
     	$("#card-holder").append(domString);
     };
@@ -52,13 +52,12 @@ $(document).ready(function(){
 	    xMen = [];
     	theAvengers = [];
     	guardiansOfTheGalaxy = [];
-    	clearDOM();
 	};
 
 	const clearDOM = () => {
-		domString = `<div></div>`;
+		domString = `""`;
 		$("#card-holder").append(domString);
-	}
+	};
 
     const loadTeams = () => {
         return new Promise((resolve, reject) => {
@@ -93,6 +92,7 @@ $(document).ready(function(){
     				xMen.push(theTeams[i]);
     		}
     	}
+        clearDOM();
     	writeToDOM(xMen);
   	};
 
@@ -104,7 +104,8 @@ $(document).ready(function(){
     		if (theTeams[m].team_id === teamId){
     			theAvengers.push(theTeams[m]);
     		}
-    	} 
+    	}
+        clearDOM(); 
     	writeToDOM(theAvengers);
     };
 
@@ -117,6 +118,7 @@ $(document).ready(function(){
 				guardiansOfTheGalaxy.push(theTeams[q]);
     		}
     	}
+        clearDOM();
     	writeToDOM(guardiansOfTheGalaxy);
     };
     

@@ -20,13 +20,24 @@ body {
 	margin-top: -75.5px;
 }
 
-.panel-default {
+.panel-warning {
 	display: inline-flex;
 	flex-direction: column;
 	align-content: flex-start;
+	color:  #000000;
 	background-color: #504a4a;
+	border-color: #f78f3f;
 	width: 20%;
 	margin-left: 4%;
 	min-height: 300px;
 }
 
+.panel-warning > .panel-heading {
+  background-color: #f78f3f;
+}
+
+.img-circle {
+	height: 150px;
+	width: 150px;
+	margin: 10px auto;
+}
