@@ -10,7 +10,7 @@ $(document).ready(function(){
     	domString += `<div class="container"><div class="row">`;
   		for(t = 0; t < team.length; t++) {
 			domString += `<div class="panel panel-warning">`;
-			domString += `<div class="panel-heading"><h3 class="panel-title">${team[t].name}</h3></div>`;
+			domString += `<div class="panel-heading text-center"><h3 class="panel-title">${team[t].name}</h3></div>`;
 			domString += `<img class="img-circle" src="${team[t].image}" alt="${team[t].name}"/>`;
 			domString += `<div class="panel-body">${team[t].description}</div>`;
 			domString += `</div>`;
