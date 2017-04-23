@@ -12,13 +12,20 @@ $(document).ready(function(){
     	domString += `<div class="container"><div class="row">`;
   		for(t = 0; t < team.length; t++) {
             let gender = team[t].gender_id;
+            let description = team[t].description;
             console.log(team);
 			domString += `<div class="panel panel-warning">`;
 			domString += `<div class="panel-heading text-center"><h3 class="panel-title">${team[t].name}</h3></div>`;
 			if (gender === 0) {
                 domString += `<img class="img-circle" src="${team[t].image}" alt="${team[t].name}"/>`;
-			} else if (gender === 1) {
+                if (description === "") {
+                    domString += `<div class="panel-body">abcde fghij klmno pqrst uvwxy z</div>`;                   
+                }
+            } else if (gender === 1) {
                 domString += `<img class="img-circle boy" src="${team[t].image}" alt="${team[t].name}"/>`;                
+                if (description === "") {
+                    domString += `<div class="panel-body">1234567890</div>`;                   
+                }
             }
             domString += `<div class="panel-body">${team[t].description}</div>`;
 			domString += `</div>`;
