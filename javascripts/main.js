@@ -65,14 +65,10 @@ $(document).ready(function(){
 
 	const clearTeamArrays = () => {
 	    xMen = [];
-    	theAvengers = [];
-    	guardiansOfTheGalaxy = [];
-        clearDOM();
-	};
+        theAvengers = [];
+        guardiansOfTheGalaxy = [];
+    };
 
-	const clearDOM = () => {
-        // document.removeChild($("#card-holder"));
-	};
 
     const loadTeams = () => {
         return new Promise((resolve, reject) => {
@@ -99,16 +95,17 @@ $(document).ready(function(){
     };
 
     const assembleXMen = () => {
-    	for (let i = 0; i < theTeams.length; i++) {
-    		if (theTeams[i].name === "X-Men") {
-    			teamId = theTeams[i].id;
-    		}
-    		if (theTeams[i].team_id === teamId){
-    				xMen.push(theTeams[i]);
-    		}
-    	}
-    	writeToDOM(xMen);
-  	};
+        document.hide();
+        for (let i = 0; i < theTeams.length; i++) {
+            if (theTeams[i].name === "X-Men") {
+                teamId = theTeams[i].id;
+            }
+            if (theTeams[i].team_id === teamId){
+                    xMen.push(theTeams[i]);
+            }
+        }
+        writeToDOM(xMen);
+    };
 
     const assembleAvengers = () => {
     	for (let m = 0; m < theTeams.length; m++) {
