@@ -19,3 +19,14 @@ body {
 	margin-left: -167px;
 	margin-top: -75.5px;
 }
+
+.panel-default {
+	display: inline-flex;
+	flex-direction: column;
+	align-content: flex-start;
+	background-color: #504a4a;
+	width: 20%;
+	margin-left: 4%;
+	min-height: 300px;
+}
+

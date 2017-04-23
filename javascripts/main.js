@@ -9,7 +9,7 @@ $(document).ready(function(){
     const writeToDOM = (team) => {
     	domString += `<div class="row">`;
   		for(t = 0; t < team.length; t++) {
-			domString += `<div class="panel panel-default col-md-2">`;
+			domString += `<div class="panel panel-default">`;
 			domString += `<div class="panel-heading"><h3 class="panel-title">${team[t].name}</h3></div>`;
 			domString += `<img class="img-circle" src="${team[t].image}" alt="${team[t].name}"/>`;
 			domString += `<div class="panel-body">${team[t].description}</div>`;
@@ -78,28 +78,6 @@ $(document).ready(function(){
         });
     };
 
-	// const checkForTypeMatch = function(human, pet) {
-	// 	const interestedInArray = human["interested-in"];
-	// 	const isMatchNumber = interestedInArray.indexOf(pet.type);
-	// 	if (isMatchNumber === -1) {
-	// 		return false;
-	// 	} else {
-	// 		return true;
-	// 	}
-	// 	return isMatch;
-	// };
-
-	// const checkForKidFriendly = function(human, pet) {
-	// 	const hasKids = human["has-kids"];
-	// 	const isKidFriendly = pet["kid-friendly"];
-	// 	let isMatched = true;
-	// 	if (hasKids && !isKidFriendly) {
-	// 		isMatched = false;
-	// 	}
-	// 	return isMatched;
-	// };
-
-
     const assembleXMen = () => {
     	for (let i = 0; i < theTeams.length; i++) {
     		if (theTeams[i].name === "X-Men") {
@@ -109,7 +87,6 @@ $(document).ready(function(){
     				xMen.push(theTeams[i]);
     		}
     	}
-    	console.log("xMen", xMen); 
     	writeToDOM(xMen);
   	};
 
@@ -122,7 +99,7 @@ $(document).ready(function(){
     			theAvengers.push(theTeams[m]);
     		}
     	} 
-    	console.log("theAvengers", theAvengers);
+    	writeToDOM(theAvengers);
     };
 
     const assembleGuardians = () => {
@@ -134,7 +111,7 @@ $(document).ready(function(){
 				guardiansOfTheGalaxy.push(theTeams[q]);
     		}
     	}
-    	console.log("Guardians of the Galaxy", guardiansOfTheGalaxy);
+    	writeToDOM(guardiansOfTheGalaxy);
     };
     
 
