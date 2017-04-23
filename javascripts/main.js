@@ -11,10 +11,16 @@ $(document).ready(function(){
     const writeToDOM = (team) => {
     	domString += `<div class="container"><div class="row">`;
   		for(t = 0; t < team.length; t++) {
+            let gender = team[t].gender_id;
+            console.log(team);
 			domString += `<div class="panel panel-warning">`;
 			domString += `<div class="panel-heading text-center"><h3 class="panel-title">${team[t].name}</h3></div>`;
-			domString += `<img class="img-circle" src="${team[t].image}" alt="${team[t].name}"/>`;
-			domString += `<div class="panel-body">${team[t].description}</div>`;
+			if (gender === 0) {
+                domString += `<img class="img-circle" src="${team[t].image}" alt="${team[t].name}"/>`;
+			} else if (gender === 1) {
+                domString += `<img class="img-circle boy" src="${team[t].image}" alt="${team[t].name}"/>`;                
+            }
+            domString += `<div class="panel-body">${team[t].description}</div>`;
 			domString += `</div>`;
 			if ((t + 1) % 4 === 0) {
 				domString += `</div><div class="row">`;
@@ -58,7 +64,7 @@ $(document).ready(function(){
 	};
 
 	const clearDOM = () => {
-        writeToDOM(emptyTeam);
+        // document.removeChild($("#card-holder"));
 	};
 
     const loadTeams = () => {

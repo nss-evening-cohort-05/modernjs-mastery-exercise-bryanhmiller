@@ -45,6 +45,11 @@ body {
 	height: 150px;
 	width: 150px;
 	margin: 20px auto;
+	border: 2px solid pink;
+}
+
+.img-circle.boy {
+	border: 2px solid #518cca;
 }
 
 
