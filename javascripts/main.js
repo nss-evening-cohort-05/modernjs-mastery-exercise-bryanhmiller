@@ -8,65 +8,80 @@ $(document).ready(function(){
     let domString;
 
 
+// The writeDom function should write everything to the DOM
     const writeToDOM = (team) => {
-    	domString += `<div class="container"><div class="row">`;
-  		for(t = 0; t < team.length; t++) {
+        domString = "";
+        
+// Each row should have a bootstrap row class
+        domString += `<div class="container"><div class="row">`;
+        for(t = 0; t < team.length; t++) {
             let gender = team[t].gender_id;
+// If there is no description for a character (ie description is "") your code should change the description 
+// as follows:
             let description = team[t].description;
-            console.log(team);
-			domString += `<div class="panel panel-warning">`;
-			domString += `<div class="panel-heading text-center"><h3 class="panel-title">${team[t].name}</h3></div>`;
-			if (gender === 0) {
+// Each character should be displayed in a bootstrap panel
+            domString += `<div class="panel panel-warning">`;
+            domString += `<div class="panel-heading text-center"><h3 class="panel-title">${team[t].name}</h3></div>`;
+// Each character's image should be a circle and have a border color of:
+// Pink if the character is Female
+            if (gender === 0) {
                 domString += `<img class="img-circle" src="${team[t].image}" alt="${team[t].name}"/>`;
+// A female character with no description should get a description of "abcde fghij klmno pqrst uvwxy z"
                 if (description === "") {
                     domString += `<div class="panel-body">abcde fghij klmno pqrst uvwxy z</div>`;                   
                 }
+// Each character's image should be a circle and have a border color of:
+// Blue if the character is Male
             } else if (gender === 1) {
                 domString += `<img class="img-circle boy" src="${team[t].image}" alt="${team[t].name}"/>`;                
+// A male character with no description should get a description of "1234567890"
                 if (description === "") {
                     domString += `<div class="panel-body">1234567890</div>`;                   
                 }
             }
             domString += `<div class="panel-body">${team[t].description}</div>`;
-			domString += `</div>`;
-			if ((t + 1) % 4 === 0) {
-				domString += `</div><div class="row">`;
-			}
-		}
-		domString += `</div></div>`;	
-
-    	$("#card-holder").append(domString);
+            domString += `</div>`;
+// There should be 4 panels in each row
+            if ((t + 1) % 4 === 0) {
+// Each row should have a bootstrap row class
+                domString += `</div><div class="row">`;
+            }
+        }
+        domString += `</div></div>`;    
+        $("#card-holder").html(domString);
     };
 
-	$("#xmen-button").click((event) => {
-	    console.log($(event.currentTarget));
-	    hideLogo();
-	    clearTeamArrays();
-	    assembleXMen();
-	  });
 
-	$("#avengers-button").click((event) => {
-	    console.log($(event.currentTarget));
-	    hideLogo();
-	    clearTeamArrays();
-	    assembleAvengers();
-	  });
+// The click event should call a function called dataGetter that has a Promise.all
+    $("#xmen-button").click((event) => {
+        hideLogo();
+        clearTeamArrays();
+        assembleXMen();
+      });
 
-	$("#gaurdians-button").click((event) => {
-	    console.log($(event.currentTarget));
-	    hideLogo();
-	    clearTeamArrays();
-	    assembleGuardians();
-	  });
+    $("#avengers-button").click((event) => {
+        hideLogo();
+        clearTeamArrays();
+        assembleAvengers();
+      });
 
-	const hideLogo = () => {
-		$("#logo").addClass("hidden");
-	};
+    $("#gaurdians-button").click((event) => {
+        hideLogo();
+        clearTeamArrays();
+        assembleGuardians();
+      });
 
-	const clearTeamArrays = () => {
-	    xMen = [];
+// On click of a button in the navbar
+// The large Marvel logo should go away (use a jQuery method for this)
+    const hideLogo = () => {
+        $("#logo").addClass("hidden");
+    };
+
+    const clearTeamArrays = () => {
+        xMen = [];
         theAvengers = [];
         guardiansOfTheGalaxy = [];
+        // document.hide();
     };
 
 
@@ -95,7 +110,6 @@ $(document).ready(function(){
     };
 
     const assembleXMen = () => {
-        document.hide();
         for (let i = 0; i < theTeams.length; i++) {
             if (theTeams[i].name === "X-Men") {
                 teamId = theTeams[i].id;
@@ -108,34 +122,36 @@ $(document).ready(function(){
     };
 
     const assembleAvengers = () => {
-    	for (let m = 0; m < theTeams.length; m++) {
-    		if (theTeams[m].name === "The Avengers") {
-    			teamId = theTeams[m].id;
-    		}
-    		if (theTeams[m].team_id === teamId){
-    			theAvengers.push(theTeams[m]);
-    		}
-    	}
+        for (let m = 0; m < theTeams.length; m++) {
+            if (theTeams[m].name === "The Avengers") {
+                teamId = theTeams[m].id;
+            }
+            if (theTeams[m].team_id === teamId){
+                theAvengers.push(theTeams[m]);
+            }
+        }
         writeToDOM(theAvengers);
     };
 
     const assembleGuardians = () => {
-    	for (let q = 0; q < theTeams.length; q++) {
-    		if (theTeams[q].name === "Guardians of the Galaxy") {
-    			teamId = theTeams[q].id;
-    		}
-    		if (theTeams[q].team_id === teamId) {
-				guardiansOfTheGalaxy.push(theTeams[q]);
-    		}
-    	}
-    	writeToDOM(guardiansOfTheGalaxy);
+        for (let q = 0; q < theTeams.length; q++) {
+            if (theTeams[q].name === "Guardians of the Galaxy") {
+                teamId = theTeams[q].id;
+            }
+            if (theTeams[q].team_id === teamId) {
+                guardiansOfTheGalaxy.push(theTeams[q]);
+            }
+        }
+        writeToDOM(guardiansOfTheGalaxy);
     };
     
 
+// The Promise.all should resolve 3 functions that get the data from the json files
+// dataGetter should pass a SINGLE array to the writeDom function
 	Promise.all([loadTeams(), loadGenders(), loadCharacters()])
-	.then(function(result){
-		result.forEach(function(xhrResult){
-			xhrResult.forEach(function(data){
+	.then((result) => {
+		result.forEach((xhrResult) => {
+			xhrResult.forEach((data) => {
 				theTeams.push(data);
 			});
 		});
