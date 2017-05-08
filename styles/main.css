@@ -1,0 +1,62 @@
+body {
+	background-color: #504a4a;
+}
+
+.navbar-brand img{
+	height: 34px;
+	width: 70px;
+	margin-top: -10px;
+}
+
+.btn {
+	margin: 0 10px;
+}
+
+.background-image {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -167px;
+	margin-top: -75.5px;
+}
+
+/*Each character should be displayed in a bootstrap panel*/
+.panel-warning {
+	display: inline-flex;
+	flex-direction: column;
+	align-content: flex-start;
+	color:  #000000;
+	background-color: #504a4a;
+	border-color: #f78f3f;
+	width: 20%;
+	margin-left: 4%;
+	min-height: 300px;
+}
+
+/*Each character should be displayed in a bootstrap panel*/
+.panel-warning > .panel-heading {
+	color: #000000;	
+	background-color: #f78f3f;
+}
+
+/*Each character should be displayed in a bootstrap panel*/
+.panel-body {
+	color: #e23636;
+}
+
+/*Each character's image should be a circle and have a border color of:
+Pink if the character is Female*/
+.img-circle {
+	height: 150px;
+	width: 150px;
+	margin: 20px auto;
+	border: 2px solid pink;
+}
+
+/*// Each character's image should be a circle and have a border color of:
+// Blue if the character is Male*/
+.img-circle.boy {
+	border: 2px solid #518cca;
+}
+
+
